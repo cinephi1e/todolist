@@ -3,15 +3,18 @@ import "./App.css";
 import TodoList from "./components/Todolist";
 
 const App = () => {
-  // 체크리스트
   const [list, setList] = useState([
-    { id: 1, date: "2022/12/07", todo: "React 과제", isDone: false },
-    { id: 2, date: "2022/12/08", todo: "JS 심화", isDone: false },
-    { id: 3, date: "2022/12/06", todo: "티켓팅", isDone: true },
-    { id: 4, date: "2022/12/06", todo: "JS 과제", isDone: true },
+    { id: 1, date: "2022/12/07", todo: "리액트 과제", isDone: true },
+    {
+      id: 2,
+      date: "2022/12/06",
+      todo: "인터파크 티켓팅",
+      isDone: false,
+    },
+    { id: 3, date: "2022/12/07", todo: "리액트 심화", isDone: false },
+    { id: 4, date: "2022/12/06", todo: "자바스크립트 과제", isDone: true },
   ]);
 
-  const [id, setId] = useState("");
   const [date, setDate] = useState("");
   const [todo, setTodo] = useState("");
 
@@ -45,7 +48,6 @@ const App = () => {
       }
     });
     setList(doneList);
-    // console.log(doneList);
   };
 
   console.log("---------------투두리스트-------------");
@@ -59,7 +61,7 @@ const App = () => {
           <input
             className="input-date"
             value={date}
-            placeholder="yyyy/mm/dd"
+            placeholder="date"
             onChange={(e) => setDate(e.target.value)}
           />
           <input
@@ -91,7 +93,6 @@ const App = () => {
           })}
         </div>
         <div className="done-list">
-          <h1>Done</h1>
           {list.map((todo) => {
             if (todo.isDone) {
               return (
@@ -108,6 +109,7 @@ const App = () => {
           })}
         </div>
       </div>
+      <div className="footer">cinephile</div>
     </div>
   );
 };
