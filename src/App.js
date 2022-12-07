@@ -1,8 +1,12 @@
 import React, { useState } from "react";
 import "./App.css";
-import TodoList from "./components/Todolist";
+import Header from "./components/header/Header";
+import Contents from "./components/contents/Contents";
+import Footer from "./components/footer/Footer";
 
 const App = () => {
+  // console.log("App - list", list);
+
   const [list, setList] = useState([
     { id: 1, date: "2022/12/07", todo: "리액트 과제", isDone: true },
     {
@@ -15,103 +19,16 @@ const App = () => {
     { id: 4, date: "2022/12/06", todo: "자바스크립트 과제", isDone: true },
   ]);
 
-  const [date, setDate] = useState("");
-  const [todo, setTodo] = useState("");
-
-  const addList = () => {
-    const newList = {
-      id: list.length + 1,
-      date: date,
-      todo: todo,
-      isDone: false,
-    };
-
-    setDate("");
-    setTodo("");
-    setList([...list, newList]);
-  };
-
-  const deleteList = (id) => {
-    const newList = list.filter((todo) => todo.id !== id);
-    setList(newList);
-  };
-
-  const listButton = (id) => {
-    const doneList = list.map((todo) => {
-      if (todo.id === id) {
-        return {
-          ...todo,
-          isDone: !todo.isDone,
-        };
-      } else {
-        return { ...todo };
-      }
-    });
-    setList(doneList);
-  };
-
-  console.log("---------------투두리스트-------------");
-  console.log(list);
-
   return (
     <div className="wrap">
-      <div className="header">
-        <h1 className="title">Todo-list</h1>
-        <div className="input">
-          <input
-            className="input-date"
-            value={date}
-            placeholder="date"
-            onChange={(e) => setDate(e.target.value)}
-          />
-          <input
-            className="input-add"
-            value={todo}
-            placeholder="Do your job!"
-            onChange={(e) => setTodo(e.target.value)}
-          />
-          <button className="input-btn" onClick={addList}>
-            추가
-          </button>
-        </div>
-      </div>
-      <div className="contents">
-        <div className="todo-list">
-          {list.map((todo) => {
-            if (!todo.isDone) {
-              return (
-                <TodoList
-                  todo={todo}
-                  key={todo.id}
-                  handleDelete={deleteList}
-                  handleButton={listButton}
-                />
-              );
-            } else {
-              return null;
-            }
-          })}
-        </div>
-        <div className="done-list">
-          {list.map((todo) => {
-            if (todo.isDone) {
-              return (
-                <TodoList
-                  todo={todo}
-                  key={todo.id}
-                  handleDelete={deleteList}
-                  handleButton={listButton}
-                />
-              );
-            } else {
-              return null;
-            }
-          })}
-        </div>
-      </div>
-      <div className="footer">cinephile</div>
+      <Header props={list} setList={setList} />
+      <Contents props={list} setList={setList} />
+      <Footer />
     </div>
   );
 };
 
 export default App;
+
+// 화면 렌더링 기준 : props, state
+// 빈칸일시 추가 불가 alert -> 빈칸 focusing

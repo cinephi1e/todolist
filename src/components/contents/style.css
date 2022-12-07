@@ -1,0 +1,33 @@
+.contents {
+  display: flex;
+  flex-direction: column;
+  min-height: 700px;
+}
+.todo-list {
+  display: flex;
+  flex-direction: column;
+}
+.done-list {
+  text-decoration: line-through;
+  margin-bottom: 10px;
+}
+.list {
+  border-bottom: 1px dashed;
+  padding: 16px 6px 14px 10px;
+}
+.list:hover {
+  background: #eee;
+}
+.list-date {
+  font-weight: 600;
+  margin-right: 7px;
+}
+.list-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  float: right;
+}
+.list-btn:hover {
+  opacity: 0.5;
+}

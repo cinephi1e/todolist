@@ -1,7 +1,8 @@
-import "../App.css";
+import "./style.css";
 
 export default function TodoList(props) {
-  console.log(props);
+  // console.log("Todolist - props", props["todo"]);
+
   return (
     <div className="list">
       <span className="list-date">{props.todo.date}</span>
