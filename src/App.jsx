@@ -7,6 +7,7 @@ import Footer from "./components/footer/Footer";
 const App = () => {
   // console.log("App - list", list);
 
+  // 리스트
   const [list, setList] = useState([
     { id: 1, date: "2022/12/07", todo: "리액트 과제", isDone: true },
     {
@@ -31,4 +32,3 @@ const App = () => {
 export default App;
 
 // 화면 렌더링 기준 : props, state
-// 빈칸일시 추가 불가 alert -> 빈칸 focusing

@@ -22,3 +22,5 @@ export default function TodoList(props) {
     </div>
   );
 }
+
+// props - 구조분해할당 해서 사용하기

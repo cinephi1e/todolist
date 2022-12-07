@@ -7,6 +7,7 @@ export default function Header(props) {
   const [date, setDate] = useState("");
   const [todo, setTodo] = useState("");
 
+  // 리스트 추가
   const addList = () => {
     const newList = {
       id: props["props"].length + 1,
@@ -43,3 +44,5 @@ export default function Header(props) {
     </div>
   );
 }
+
+// 빈칸일시 추가 불가 alert -> 빈칸 focusing

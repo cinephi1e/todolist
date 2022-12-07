@@ -5,11 +5,13 @@ export default function Contents(props) {
   //   console.log("Contents - props", props);
   //   console.log("Contents - props.list", props["props"]);
 
+  // 리스트 delete 버튼
   const deleteList = (id) => {
     const newList = props["props"].filter((todo) => todo.id !== id);
     props.setList(newList);
   };
 
+  // 리스트 done/cancel 버튼
   const listButton = (id) => {
     const doneList = props["props"].map((todo) => {
       if (todo.id === id) {
@@ -35,7 +37,6 @@ export default function Contents(props) {
                 key={todo.id}
                 handleDelete={deleteList}
                 handleButton={listButton}
-                props={(deleteList, listButton)}
               />
             );
           } else {
@@ -64,3 +65,4 @@ export default function Contents(props) {
 }
 
 // 리스트 중복 코드 제거
+// 삭제, 취소 전 alert
