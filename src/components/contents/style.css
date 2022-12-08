@@ -9,7 +9,7 @@
 }
 .done-list {
   text-decoration: line-through;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 .list {
   border-bottom: 1px dashed;

@@ -22,8 +22,8 @@ const App = () => {
 
   return (
     <div className="wrap">
-      <Header props={list} setList={setList} />
-      <Contents props={list} setList={setList} />
+      <Header list={list} setList={setList} />
+      <Contents list={list} setList={setList} />
       <Footer />
     </div>
   );

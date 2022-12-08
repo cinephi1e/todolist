@@ -1,26 +1,21 @@
 import "./style.css";
 
-export default function TodoList(props) {
-  // console.log("Todolist - props", props["todo"]);
+export default function TodoList({ todo, id, handleDelete, handleButton }) {
+  // console.log("Todolist");
+  // console.log("todo", todo);
 
   return (
     <div className="list">
-      <span className="list-date">{props.todo.date}</span>
-      {props.todo.todo}
-      <button
-        className="list-btn"
-        onClick={() => props.handleDelete(props.todo.id)}
-      >
+      <span className="list-date">{todo.date}</span>
+      {todo.todo}
+
+      <button className="list-btn" onClick={() => handleDelete(id)}>
         delete
       </button>
-      <button
-        className="list-btn"
-        onClick={() => props.handleButton(props.todo.id)}
-      >
-        {props.todo.isDone ? "cancel" : "done"}
+
+      <button className="list-btn" onClick={() => handleButton(id)}>
+        {todo.isDone ? "cancel" : "done"}
       </button>
     </div>
   );
 }
-
-// props - 구조분해할당 해서 사용하기

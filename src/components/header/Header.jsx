@@ -1,8 +1,8 @@
 import "./style.css";
-import { useState } from "react";
+import { useState, useRef } from "react";
 
-export default function Header(props) {
-  //   console.log("Header - props의 list", props["props"]);
+export default function Header({ list, setList }) {
+  //   console.log("Header - props의 list", list);
 
   const [date, setDate] = useState("");
   const [todo, setTodo] = useState("");
@@ -10,15 +10,19 @@ export default function Header(props) {
   // 리스트 추가
   const addList = () => {
     const newList = {
-      id: props["props"].length + 1,
+      id: list.length + 1,
       date: date,
       todo: todo,
       isDone: false,
     };
 
-    setDate("");
-    setTodo("");
-    props.setList([...props["props"], newList]);
+    if (date && todo) {
+      setDate("");
+      setTodo("");
+      setList([...list, newList]);
+    } else {
+      alert("빠트린 내용이 없나 다시 한 번 확인해보세요.");
+    }
   };
 
   return (
