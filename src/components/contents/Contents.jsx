@@ -1,8 +1,9 @@
 import "./style.css";
+import styled from "styled-components";
 import TodoList from "./Todolist";
 
-export default function Contents({ list, setList }) {
-  console.log("Contents - list", list);
+export default function Contents({ list, setList, name }) {
+  const component = name === "working" ? true : false;
 
   // 리스트 delete 버튼
   const deleteList = (id) => {
@@ -28,41 +29,20 @@ export default function Contents({ list, setList }) {
   };
 
   return (
-    <div className="contents">
-      <div className="todo-list">
-        {list.map((todo) => {
-          if (!todo.isDone) {
-            return (
-              <TodoList
-                todo={todo}
-                id={todo.id}
-                handleDelete={deleteList}
-                handleButton={listButton}
-              />
-            );
-          } else {
-            return null;
-          }
+    <>
+      {list
+        .filter((todo) => component === !todo.isDone)
+        .map((todo) => {
+          return (
+            <TodoList
+              todo={todo}
+              id={todo.id}
+              isDone={todo.isDone}
+              handleDelete={deleteList}
+              handleButton={listButton}
+            />
+          );
         })}
-      </div>
-      <div className="done-list">
-        {list.map((todo) => {
-          if (todo.isDone) {
-            return (
-              <TodoList
-                todo={todo}
-                id={todo.id}
-                handleDelete={deleteList}
-                handleButton={listButton}
-              />
-            );
-          } else {
-            return null;
-          }
-        })}
-      </div>
-    </div>
+    </>
   );
 }
-
-// 리스트 중복 코드 제거

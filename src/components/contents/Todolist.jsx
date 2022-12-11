@@ -1,20 +1,30 @@
 import "./style.css";
 
-export default function TodoList({ todo, id, handleDelete, handleButton }) {
-  // console.log("Todolist");
-  // console.log("todo", todo);
-
+export default function TodoList({
+  todo,
+  id,
+  isDone,
+  handleDelete,
+  handleButton,
+}) {
   return (
     <div className="list">
-      <span className="list-date">{todo.date}</span>
-      {todo.todo}
-
+      {isDone ? (
+        <div className="done-list">
+          <span className="list-date">{todo.date}</span>
+          {todo.todo}
+        </div>
+      ) : (
+        <div className="todo-list">
+          <span className="list-date">{todo.date}</span>
+          {todo.todo}
+        </div>
+      )}
+      <button className="list-btn" onClick={() => handleButton(id)}>
+        {isDone ? "cancel" : "done"}
+      </button>
       <button className="list-btn" onClick={() => handleDelete(id)}>
         delete
-      </button>
-
-      <button className="list-btn" onClick={() => handleButton(id)}>
-        {todo.isDone ? "cancel" : "done"}
       </button>
     </div>
   );

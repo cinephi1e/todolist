@@ -1,22 +1,17 @@
-.contents {
-  display: flex;
-  flex-direction: column;
-  min-height: 700px;
-}
-.todo-list {
-  display: flex;
-  flex-direction: column;
-}
-.done-list {
-  text-decoration: line-through;
-  /* margin-bottom: 10px; */
-}
 .list {
+  display: flex;
   border-bottom: 1px dashed;
   padding: 16px 6px 14px 10px;
 }
 .list:hover {
   background: #eee;
+}
+.todo-list {
+  width: 500px;
+}
+.done-list {
+  width: 500px;
+  text-decoration: line-through;
 }
 .list-date {
   font-weight: 600;
